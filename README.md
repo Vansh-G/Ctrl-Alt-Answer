@@ -1,4 +1,5 @@
 **Ctrl+Alt+Answer**: **Your Web-Powered Question Engine**
+
 Tired of endless tabs and Google rabbit holes? Ctrl+Alt+Answer simplifies your quest for knowledge. Feed it any webpage URL, and instantly unlock the power of OpenAI's AI to answer your questions on its content. Forget clunky interfaces and convoluted queries - just ask, and Ctrl+Alt+Answer will weave together insightful answers from the webpage's hidden depths.
 
 Imagine:
