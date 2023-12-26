@@ -8,6 +8,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
+from langchain.document_loaders import OnlinePDFLoader
 
 from dotenv import load_dotenv
 load_dotenv()  # take environment variables from .env (especially openai api key)
@@ -29,7 +30,9 @@ llm = OpenAI(temperature=0.9, max_tokens=500, openai_api_key="sk-y7bYwJe3XAjSeqb
 
 if process_url_clicked:
     # load data
-    loader = UnstructuredURLLoader(urls=urls)
+    # loader = UnstructuredURLLoader(urls=urls)
+    loader = OnlinePDFLoader(urls)
+    
     main_placeholder.text("Data Loading...Started...✅✅✅")
     data = loader.load()
     print('loader loaded')
