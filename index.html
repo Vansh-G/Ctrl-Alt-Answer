@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Research Tool</title>
+</head>
+<body>
+    <form action="/answer" method="POST">
+        <input type="text" name="question" placeholder="Enter your question here">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="answer"></div>
+    <script>
+        // AJAX request to get the answer from the API
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/answer");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Parse the JSON response
+                const response = JSON.parse(xhr.responseText);
+
+                // Display the answer on the UI
+                document.getElementById("answer").innerHTML = response.answer;
+
+                // Display the sources, if available
+                const sources = response.sources;
+                if (sources) {
+                    document.getElementById("answer").innerHTML += "<br>Sources:<br>" + sources;
+                }
+            }
+        };
+
+        // Submit the form when the user hits enter
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get the query from the input field
+            const query = document.querySelector("input[name='question']").value;
+
+            // Send the AJAX request to get the answer
+            xhr.send(JSON.stringify({ question: query }));
+        });
+    </script>
+</body>
+</html>
